@@ -14,12 +14,12 @@ func handleSignal(signal os.Signal) {
 
 func main() {
 	sigs := make(chan os.Signal, 1)
-	signal.Notify(sigs, os.Interrupt, syscall.SIGUSR2)
+	signal.Notify(sigs, syscall.SIGUSR1, syscall.SIGUSR2)
 	go func() {
 		for {
 			sig := <-sigs
 			switch sig {
-			case os.Interrupt:
+			case syscall.SIGUSR1:
 				fmt.Println("Caught:", sig)
 			case syscall.SIGUSR2:
 				handleSignal(sig)
@@ -30,6 +30,6 @@ func main() {
 
 	for {
 		fmt.Printf(".")
-		time.Sleep(20 * time.Second)
+		time.Sleep(10 * time.Second)
 	}
 }
