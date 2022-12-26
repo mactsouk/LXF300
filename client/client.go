@@ -62,7 +62,7 @@ func main() {
 				log.Println("ReadMessage() error:", err)
 				return
 			}
-			log.Printf("WC Client received: %s", message)
+			log.Printf("WS Client received: %s", message)
 		}
 	}()
 
