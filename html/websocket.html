@@ -19,7 +19,7 @@
             console.log("Connected!");
             ws.send("Hello From the Client!")
         };
-        
+
         ws.onmessage = function(event) {
           console.log(`[message] Data received from server: ${event.data}`);
           ws.close(1000, "Work complete");
